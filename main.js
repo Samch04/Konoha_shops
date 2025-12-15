@@ -1,4 +1,4 @@
-// main.js: logique du panier
+
 const itemsList = document.getElementById('items-list');
 const cartItemsEl = document.getElementById('cart-items');
 const totalEl = document.getElementById('cart-total');
@@ -93,10 +93,10 @@ cartItemsEl.addEventListener('click', (e)=>{
 
 checkoutBtn.addEventListener('click', ()=>{
   if(cart.length === 0){ showMsg('Votre panier est vide.'); return }
-  // simple validation: all qty >=1
+  
   const invalid = cart.some(c=>c.qty < 1);
   if(invalid){ showMsg('Quantités invalides dans le panier.'); return }
-  // simulate validation success
+
   showMsg('Commande validée ✓', true);
   cart.length = 0; renderCart();
 });
@@ -105,6 +105,4 @@ function showMsg(text, success=false){
   msgEl.style.display = 'block'; msgEl.style.color = success ? '#064e3b' : '#b91c1c'; msgEl.textContent = text;
   if(success) setTimeout(()=>{ msgEl.style.display='none' }, 3500);
 }
-
-// Initial render (no demo products)
 renderCatalog(); renderCart();
